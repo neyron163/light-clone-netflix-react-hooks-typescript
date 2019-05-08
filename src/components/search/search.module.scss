@@ -1,0 +1,37 @@
+@import "../variable.scss";
+
+.search {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+
+  .input {
+    background: none;
+    border: 1px solid var(--color-white);
+    font-weight: var(--font-weight-bold);
+    padding: 8px 10px;
+    color: var(--color-white);
+  }
+
+  .magnifierButton {
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+    top: 4px;
+    z-index: 2;
+  }
+
+  .magnifier {
+    width: 15px;
+    height: 19px;
+  }
+
+  .animate {
+    transform: translateX(100%);
+    transition: 0.3s transform;
+  }
+
+  .visible {
+    transform: translateX(0);
+  }
+}
