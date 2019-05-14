@@ -1,6 +1,14 @@
 @import '../variable.scss';
 
 .menu {
+    .list {
+        display: flex;
+        color: var(--color-white);
+
+        li {
+            margin-left: 20px;
+        }
+    }
     .active {
         font-weight: var(--font-weight-bold);
     }

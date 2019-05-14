@@ -9,7 +9,7 @@
     background: none;
     border: 1px solid var(--color-white);
     font-weight: var(--font-weight-bold);
-    padding: 8px 10px;
+    padding: 8px 35px;
     color: var(--color-white);
   }
 
@@ -17,8 +17,9 @@
     cursor: pointer;
     position: absolute;
     left: 10px;
-    top: 4px;
+    top: 50%;
     z-index: 2;
+    transform: translateY(-50%);
   }
 
   .magnifier {

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import s from "./search.module.scss";
 
 interface PropsType {
-  onChange: any;
+  onChange(e: React.ChangeEvent<HTMLInputElement>): void;
   result: string;
 }
 

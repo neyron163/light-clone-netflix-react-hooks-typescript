@@ -7,7 +7,7 @@ export const Home: React.FC = () => {
   const [data] = useState(["film", "movie", "cinema"]);
   const [result, setResult] = useState<string>("");
 
-  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function onChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const value = e.target.value;
 
     if (value.length !== 0) {
@@ -20,7 +20,7 @@ export const Home: React.FC = () => {
   return (
     <div className={s.home}>
       <Header result={result} onChange={onChange} />
-      {!result && <img src={preview} />}
+      {!result && <img src={preview} alt={preview} />}
       <div style={{marginTop: "155px"}}>{result}</div>
     </div>
   );

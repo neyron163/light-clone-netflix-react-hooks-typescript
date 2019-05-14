@@ -5,7 +5,7 @@ import s from "./menu.module.scss";
 export const Menu: React.FC = () => {
   return (
     <nav className={s.menu}>
-      <ul>
+      <ul className={s.list}>
         <li className={s.active}>
           <a href="/">Home</a>
         </li>
