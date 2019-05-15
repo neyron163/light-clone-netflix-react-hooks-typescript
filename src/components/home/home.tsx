@@ -7,15 +7,8 @@ export const Home: React.FC = () => {
   const [data] = useState(["film", "movie", "cinema"]);
   const [result, setResult] = useState<string>("");
 
-  function onChange(e: React.ChangeEvent<HTMLInputElement>): void {
-    const value = e.target.value;
-
-    if (value.length !== 0) {
-      const array = data.find(el => el.indexOf(value) !== -1);
-      setResult(array ? array : value);
-    } else {
-      setResult("");
-    }
+  function onChange({target}: React.ChangeEvent<HTMLInputElement>): void {
+    setResult(data.find(el => el.indexOf(target.value) !== -1) || "")
   }
   return (
     <div className={s.home}>

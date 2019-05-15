@@ -9,9 +9,9 @@ interface PropsType {
 }
 
 export const Search = ({ onChange, result }: PropsType) => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState<boolean>(false);
 
-  const onClick = useCallback(() => {
+  const onClick = useCallback((): void => {
     setVisible(!visible);
   }, [visible]);
 
