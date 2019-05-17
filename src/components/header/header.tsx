@@ -5,7 +5,7 @@ import { Menu } from "../menu/menu";
 import s from "./header.module.scss";
 
 interface PropsType {
-  onChange: any;
+  onChange(e: React.ChangeEvent<HTMLInputElement>): void;
   result: string;
 }
 

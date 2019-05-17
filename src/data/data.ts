@@ -1,5 +1,6 @@
 import friends from "../images/friends.jpg";
-import loveDeathRobots from "../images/loveDeathRobots.jpg";
+import loveDeathRobots from "../images/love-death-robots.jpg";
+import suits from "../images/suits.jpg";
 
 export const DATA_MOVIES = [
   {
@@ -9,5 +10,9 @@ export const DATA_MOVIES = [
   {
     title: "Love, Death & Robots",
     preview: loveDeathRobots
+  },
+  {
+    title: "Suits",
+    preview: suits
   }
 ];
