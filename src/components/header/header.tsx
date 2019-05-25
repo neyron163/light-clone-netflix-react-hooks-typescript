@@ -6,10 +6,9 @@ import s from "./header.module.scss";
 
 interface PropsType {
   onChange(e: React.ChangeEvent<HTMLInputElement>): void;
-  result: string;
 }
 
-export const Header = ({ onChange, result }: PropsType) => {
+export const Header = ({ onChange }: PropsType) => {
   return (
     <div className={s.header}>
       <div className={s.menuBox}>
@@ -18,7 +17,7 @@ export const Header = ({ onChange, result }: PropsType) => {
         </a>
         <Menu />
       </div>
-      <Search result={result} onChange={onChange} />
+      <Search onChange={onChange} />
     </div>
   );
 };

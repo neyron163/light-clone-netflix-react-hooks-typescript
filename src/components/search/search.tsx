@@ -5,10 +5,9 @@ import s from "./search.module.scss";
 
 interface PropsType {
   onChange(e: React.ChangeEvent<HTMLInputElement>): void;
-  result: string;
 }
 
-export const Search = ({ onChange, result }: PropsType) => {
+export const Search = ({ onChange }: PropsType) => {
   const [visible, setVisible] = useState<boolean>(false);
 
   const onClick = useCallback((): void => {
@@ -22,8 +21,9 @@ export const Search = ({ onChange, result }: PropsType) => {
           <img src={magnifier} alt="magnifier" />
         </div>
       </button>
-      <div className={classNames(s.animate, {[s.visible]: visible})}>
+      <div data-testid="countvalue" className={classNames(s.animate, {[s.visible]: visible})}>
         <input
+          data-testid="input"
           className={s.input}
           type="text"
           onChange={e => onChange(e)}
