@@ -2,7 +2,7 @@ import React from "react";
 
 import s from "./menu.module.scss";
 
-export const Menu: React.FC = () => {
+export const Menu: React.FC = (): React.ReactElement => {
   return (
     <nav className={s.menu}>
       <ul className={s.list}>

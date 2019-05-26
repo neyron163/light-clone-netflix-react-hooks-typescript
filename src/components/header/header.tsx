@@ -8,7 +8,7 @@ interface PropsType {
   onChange(e: React.ChangeEvent<HTMLInputElement>): void;
 }
 
-export const Header = ({ onChange }: PropsType) => {
+export const Header = ({ onChange }: PropsType): React.ReactElement => {
   return (
     <div className={s.header}>
       <div className={s.menuBox}>

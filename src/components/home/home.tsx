@@ -3,12 +3,13 @@ import preview from "../../images/preview.jpg";
 import { Header } from "../header/header";
 import { DATA_MOVIES } from "../../data/data";
 import s from "./home.module.scss";
-import { element } from "prop-types";
+import Slider from "react-slick";
 
 export const Home: React.FC = (): React.ReactElement => {
   const [result, setResult] = useState<Array<string | boolean>>([]);
   const [movies, setMovies] = useState<Array<string>>([]);
-  const [match, setMatch] = useState<boolean>(false);
+  const [match, setMatch] = useState<string>("");
+  const [targetResult, setTargetResult] = useState("");
 
   useEffect(() => {
     setMovies(
@@ -18,26 +19,37 @@ export const Home: React.FC = (): React.ReactElement => {
     );
   }, []);
 
+  const getItems = (value: string) => {
+    const items = movies
+      .map(
+        (element): string | boolean =>
+          !element.indexOf(value.toLowerCase()) && element
+      )
+      .filter((element): string | boolean => element !== false);
+
+    if (items.length) {
+      return items;
+    } else {
+      return [];
+    }
+  };
+
   function onChange({ target }: React.ChangeEvent<HTMLInputElement>): void {
     if (target.value === "") {
       setResult([]);
     } else {
-      setResult(
-        movies
-          .map(
-            (element): string | boolean =>
-              !element.indexOf(target.value.toLowerCase()) && element
-          )
-          .filter((element): string | boolean => element != false)
-      );
-      setMatch(
-        movies.find(el => el.indexOf(target.value.toLowerCase()) !== -1)
-          ? false
-          : true
-      );
+      setResult(getItems(target.value));
+      setTargetResult(target.value);
+      setMatch(target.value);
     }
   }
   const length = result.length;
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 7
+  };
 
   return (
     <div className={s.home}>
@@ -56,22 +68,24 @@ export const Home: React.FC = (): React.ReactElement => {
           )}
         </div>
       )}
-      {length !== 0 && match ? (
+      {length === 0 && match.length > 1 ? (
         <div
           className={s.suppose}
-        >{`Sorry we don't have any something like this ${result}`}</div>
+        >{`Sorry we don't have any something like this ${targetResult}`}</div>
       ) : (
         length === 0 && (
-          <div>
+          <>
             <img src={preview} alt={preview} />
             <div className={s.containerAll}>
-              {DATA_MOVIES.map(el => (
-                <div className={s.item}>
-                  <img src={el.preview} alt={preview} />
-                </div>
-              ))}
+              <Slider {...settings}>
+                {DATA_MOVIES.map(el => (
+                  <div className={s.item}>
+                    <img src={el.preview} alt={preview} />
+                  </div>
+                ))}
+              </Slider>
             </div>
-          </div>
+          </>
         )
       )}
     </div>

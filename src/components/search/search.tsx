@@ -7,7 +7,7 @@ interface PropsType {
   onChange(e: React.ChangeEvent<HTMLInputElement>): void;
 }
 
-export const Search = ({ onChange }: PropsType) => {
+export const Search = ({ onChange }: PropsType): React.ReactElement => {
   const [visible, setVisible] = useState<boolean>(false);
 
   const onClick = useCallback((): void => {

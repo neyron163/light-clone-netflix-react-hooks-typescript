@@ -1,4 +1,4 @@
-@import '../variable.scss';
+@import "../variable.scss";
 
 .home {
   min-height: 100vh;
@@ -6,7 +6,9 @@
   background: var(--color-dark);
 
   .suppose {
-    margin-top: 60px;
+    margin-top: 140px;
+    color: var(--color-white);
+    text-align: center;
   }
 
   .container {
@@ -16,18 +18,14 @@
   }
 
   .containerAll {
-      display: flex;
-      margin-top: 60px;
+    margin-top: 60px;
   }
 
   .item {
-    width: 258px;
+    min-width: 258px;
     height: 145px;
     position: relative;
-
-    &:not(:last-child) {
-      margin-right: 6px;
-    }
+    margin-right: 6px;
 
     img {
       position: absolute;
