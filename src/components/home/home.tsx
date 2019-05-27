@@ -4,6 +4,7 @@ import { Header } from "../header/header";
 import { DATA_MOVIES } from "../../data/data";
 import s from "./home.module.scss";
 import Slider from "react-slick";
+import { moviesTypes } from "../../types";
 
 export const Home: React.FC = (): React.ReactElement => {
   const [result, setResult] = useState<Array<string>>([]);
@@ -11,17 +12,20 @@ export const Home: React.FC = (): React.ReactElement => {
   const [match, setMatch] = useState<string>("");
   const [targetResult, setTargetResult] = useState("");
 
-  useEffect(() => {
+  useEffect((): void => {
     setMovies(
-      DATA_MOVIES.map((element): string => element.title)
-        .filter((value, index, self): boolean => self.indexOf(value) === index)
-        .map((element): string => element.toLowerCase())
+      DATA_MOVIES.map((element: moviesTypes): string => element.title)
+        .filter(
+          (value: string, index: number, self: Array<string>): boolean =>
+            self.indexOf(value) === index
+        )
+        .map((element: string): string => element.toLowerCase())
     );
   }, []);
 
   function onChange({ target }: React.ChangeEvent<HTMLInputElement>): void {
     const value = target.value;
-    
+
     if (value === "") {
       setResult([]);
     } else {
@@ -50,12 +54,12 @@ export const Home: React.FC = (): React.ReactElement => {
       <Header onChange={onChange} />
       {length && (
         <div className={s.container}>
-          {DATA_MOVIES.map(el =>
+          {DATA_MOVIES.map((element: moviesTypes) =>
             result.map(
               res =>
-                el.title.toLowerCase() === res && (
+                element.title.toLowerCase() === res && (
                   <div className={s.item}>
-                    <img src={el.preview} alt={preview} />
+                    <img src={element.preview} alt={preview} />
                   </div>
                 )
             )
@@ -72,9 +76,9 @@ export const Home: React.FC = (): React.ReactElement => {
             <img src={preview} alt={preview} />
             <div className={s.containerAll}>
               <Slider {...settings}>
-                {DATA_MOVIES.map(el => (
+                {DATA_MOVIES.map((element: moviesTypes) => (
                   <div className={s.item}>
-                    <img src={el.preview} alt={preview} />
+                    <img src={element.preview} alt={preview} />
                   </div>
                 ))}
               </Slider>
