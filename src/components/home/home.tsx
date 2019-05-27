@@ -6,7 +6,7 @@ import s from "./home.module.scss";
 import Slider from "react-slick";
 
 export const Home: React.FC = (): React.ReactElement => {
-  const [result, setResult] = useState<Array<string | boolean>>([]);
+  const [result, setResult] = useState<Array<string>>([]);
   const [movies, setMovies] = useState<Array<string>>([]);
   const [match, setMatch] = useState<string>("");
   const [targetResult, setTargetResult] = useState("");
@@ -19,28 +19,22 @@ export const Home: React.FC = (): React.ReactElement => {
     );
   }, []);
 
-  const getItems = (value: string) => {
-    const items = movies
-      .map(
-        (element): string | boolean =>
-          !element.indexOf(value.toLowerCase()) && element
-      )
-      .filter((element): string | boolean => element !== false);
-
-    if (items.length) {
-      return items;
-    } else {
-      return [];
-    }
-  };
-
   function onChange({ target }: React.ChangeEvent<HTMLInputElement>): void {
-    if (target.value === "") {
+    const value = target.value;
+    
+    if (value === "") {
       setResult([]);
     } else {
-      setResult(getItems(target.value));
-      setTargetResult(target.value);
-      setMatch(target.value);
+      setResult(
+        movies
+          .map(
+            (element: string): string =>
+              !element.indexOf(value.toLowerCase()) ? element : ""
+          )
+          .filter((element: string): string | boolean => element !== "")
+      );
+      setTargetResult(value);
+      setMatch(value);
     }
   }
   const length = result.length;
