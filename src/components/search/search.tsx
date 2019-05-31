@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import magnifier from "../../images/magnifier.svg";
-import classNames from 'classnames';
+import classNames from "classnames";
 import s from "./search.module.scss";
 
 interface PropsType {
@@ -16,12 +16,19 @@ export const Search = ({ onChange }: PropsType): React.ReactElement => {
 
   return (
     <div className={s.search}>
-      <button className={s.magnifierButton} onClick={onClick}>
+      <button
+        data-testid="button"
+        className={s.magnifierButton}
+        onClick={onClick}
+      >
         <div className={s.magnifier}>
           <img src={magnifier} alt="magnifier" />
         </div>
       </button>
-      <div data-testid="countvalue" className={classNames(s.animate, {[s.visible]: visible})}>
+      <div
+        data-testid="animate"
+        className={classNames(s.animate, { [s.visible]: visible })}
+      >
         <input
           data-testid="input"
           className={s.input}

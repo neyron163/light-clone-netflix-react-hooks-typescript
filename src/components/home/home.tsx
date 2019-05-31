@@ -3,8 +3,8 @@ import preview from "../../images/preview.jpg";
 import { Header } from "../header/header";
 import { DATA_MOVIES } from "../../data/data";
 import s from "./home.module.scss";
-import Slider from "react-slick";
 import { moviesTypes } from "../../types";
+import {SliderSection} from '../sliderSection/sliderSection';
 
 export const Home: React.FC = (): React.ReactElement => {
   const [result, setResult] = useState<Array<string>>([]);
@@ -52,7 +52,7 @@ export const Home: React.FC = (): React.ReactElement => {
   return (
     <div className={s.home}>
       <Header onChange={onChange} />
-      {length && (
+      {length ? (
         <div className={s.container}>
           {DATA_MOVIES.map((element: moviesTypes) =>
             result.map(
@@ -65,7 +65,7 @@ export const Home: React.FC = (): React.ReactElement => {
             )
           )}
         </div>
-      )}
+      ) : null}
       {length === 0 && match.length > 1 ? (
         <div
           className={s.suppose}
@@ -73,16 +73,9 @@ export const Home: React.FC = (): React.ReactElement => {
       ) : (
         length === 0 && (
           <>
-            <img src={preview} alt={preview} />
-            <div className={s.containerAll}>
-              <Slider {...settings}>
-                {DATA_MOVIES.map((element: moviesTypes) => (
-                  <div className={s.item}>
-                    <img src={element.preview} alt={preview} />
-                  </div>
-                ))}
-              </Slider>
-            </div>
+            <img className={s.preview} src={preview} alt={preview} />
+            <SliderSection settings={settings} data={DATA_MOVIES} />
+            <SliderSection settings={settings} data={DATA_MOVIES} />
           </>
         )
       )}
