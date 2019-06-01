@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
-import preview from "../../images/preview.jpg";
+import React, { useState, useEffect, ReactElement, Fragment } from "react";
+import preview from "../../images/preview.webp";
+import logo from "../../images/logo.webp";
 import { Header } from "../header/header";
 import { DATA_MOVIES } from "../../data/data";
+import { moviesTypes, settings } from "../../types";
+import { SliderSection } from "../sliderSection/sliderSection";
+
 import s from "./home.module.scss";
-import { moviesTypes } from "../../types";
-import {SliderSection} from '../sliderSection/sliderSection';
 
 export const Home: React.FC = (): React.ReactElement => {
   const [result, setResult] = useState<Array<string>>([]);
   const [movies, setMovies] = useState<Array<string>>([]);
   const [match, setMatch] = useState<string>("");
-  const [targetResult, setTargetResult] = useState("");
+  const [targetResult, setTargetResult] = useState<string>("");
 
   useEffect((): void => {
     setMovies(
@@ -41,8 +43,9 @@ export const Home: React.FC = (): React.ReactElement => {
       setMatch(value);
     }
   }
+
   const length = result.length;
-  const settings = {
+  const settings: settings = {
     infinite: true,
     speed: 500,
     slidesToShow: 6,
@@ -56,7 +59,7 @@ export const Home: React.FC = (): React.ReactElement => {
         <div className={s.container}>
           {DATA_MOVIES.map((element: moviesTypes) =>
             result.map(
-              res =>
+              (res: string): ReactElement | boolean =>
                 element.title.toLowerCase() === res && (
                   <div className={s.item}>
                     <img src={element.preview} alt={preview} />
@@ -72,11 +75,12 @@ export const Home: React.FC = (): React.ReactElement => {
         >{`Sorry we don't have any something like this ${targetResult}`}</div>
       ) : (
         length === 0 && (
-          <>
+          <Fragment>
             <img className={s.preview} src={preview} alt={preview} />
+            <img className={s.logo} src={logo} alt={logo} />
             <SliderSection settings={settings} data={DATA_MOVIES} />
             <SliderSection settings={settings} data={DATA_MOVIES} />
-          </>
+          </Fragment>
         )
       )}
     </div>

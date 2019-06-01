@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Menu /> should render correctly 1`] = `
+<nav
+  className="menu"
+>
+  <ul
+    className="list"
+  >
+    <li
+      className="active"
+    >
+      <a
+        href="/"
+      >
+        Home
+      </a>
+    </li>
+    <li>
+      <a
+        href="#"
+      >
+        Tv Shows
+      </a>
+    </li>
+    <li>
+      <a
+        href="#"
+      >
+        Movies
+      </a>
+    </li>
+    <li>
+      <a
+        href="#"
+      >
+        Recently Added
+      </a>
+    </li>
+    <li>
+      <a
+        href="#"
+      >
+        My list
+      </a>
+    </li>
+  </ul>
+</nav>
+`;

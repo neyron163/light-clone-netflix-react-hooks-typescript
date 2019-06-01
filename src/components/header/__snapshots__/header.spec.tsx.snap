@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> should render correctly 1`] = `
+<div
+  className="header"
+>
+  <div
+    className="menuBox"
+  >
+    <a
+      href="/"
+    >
+      <img
+        alt="logo"
+        className="logo"
+        src="logo.svg"
+      />
+    </a>
+    <nav
+      className="menu"
+    >
+      <ul
+        className="list"
+      >
+        <li
+          className="active"
+        >
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+          >
+            Tv Shows
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+          >
+            Movies
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+          >
+            Recently Added
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+          >
+            My list
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div
+    className="search"
+  >
+    <button
+      className="magnifierButton"
+      data-testid="button"
+      onClick={[Function]}
+    >
+      <div
+        className="magnifier"
+      >
+        <img
+          alt="magnifier"
+          src="magnifier.svg"
+        />
+      </div>
+    </button>
+    <div
+      className="animate"
+      data-testid="animate"
+    >
+      <input
+        className="input"
+        data-testid="input"
+        onChange={[Function]}
+        placeholder="Title, people, genres"
+        type="text"
+      />
+    </div>
+  </div>
+</div>
+`;

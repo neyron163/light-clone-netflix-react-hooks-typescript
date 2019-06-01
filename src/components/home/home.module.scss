@@ -38,4 +38,12 @@
     height: 80vh;
     width: 100%;
   }
+
+  .logo {
+    position: absolute;
+    z-index: 1;
+    top: 30%;
+    left: 10%;
+    transform: translate(-30%, -10%);
+  }
 }
