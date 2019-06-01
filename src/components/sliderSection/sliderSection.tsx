@@ -1,11 +1,12 @@
 import React, { ReactElement } from "react";
-import s from "./sliderSection.module.scss";
 import Slider from "react-slick";
 import { moviesTypes, settings } from "../../types";
 
+import s from "./sliderSection.module.scss";
+
 interface PropsType {
   settings: settings;
-  data: any;
+  data: Array<moviesTypes>;
 }
 
 export const SliderSection = ({ settings, data }: PropsType): ReactElement => (
